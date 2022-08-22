@@ -1,14 +1,18 @@
 # fcc-sci-comp-w-python
 Repo to demonstrate my progress learning Python.
+<br/>
+<br/>
 
 
-Scientific Computing with Python
-Instructor:  Charles Russell Severance, University of Michigan
-Platform:  freeCodeCamp
-(a.k.a. Python for Everbody, via Coursera)
+### Scientific Computing with Python
+Instructor:  *Charles Russell Severance, University of Michigan*
+Platform:  *freeCodeCamp*
+(a.k.a. Python for Everbody)
+<br/>
+<br/>
 
-
-Course Outline (Python for Everybody):
+---
+### Course Outline (Python for Everybody):
 - Introduction:  Why Program
 - Variables, Expressions, & Statements
 - Conditional Execution
@@ -25,9 +29,11 @@ Course Outline (Python for Everybody):
 - Object-Oriented Programming
 - Databases
 - Data Visualization
+<br/>
+<br/>
 
-
-Projects (Scientific Computing with Python):
+---
+### Projects (Scientific Computing with Python):
 - Arithmetic Formatter
 - Time Calculator
 - Budget App
