@@ -9,17 +9,22 @@ Platform:  freeCodeCamp
 
 
 Course Outline (Python for Everybody):
-- Introduction
-- Expressions & Conditions
+- Introduction:  Why Program
+- Variables, Expressions, & Statements
+- Conditional Execution
+- Functions
 - Loops & Iterations
+- Strings
 - Files
-- Lists, Dictionaries, & Tuples
+- Lists
+- Dictionaries
+- Tuples
 - Regular Expressions
-- Networking
-- Web Services
-- Python Objects
-- Relational Databases
-- Visualizing Data
+- Network Programming
+- Using Web Services
+- Object-Oriented Programming
+- Databases
+- Data Visualization
 
 
 Projects (Scientific Computing with Python):
