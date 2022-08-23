@@ -54,94 +54,173 @@ Which line/lines should be surrounded by try block?
     jane()
     fred()
     jane()
+    > ABC
+    > Zap
+    > ABC
+
+11. What will the following code print out?:
+    n = 0
+    while True:
+        if n == 3:
+            break
+        print(n)
+        n = n + 1
+    > 0
+    > 1
+    > 2
+
+12. How many lines will the following code print?:
+    for i in [2,1,5]:
+        print(i)
+    > 3
+
+13. Below is code to find the smallest value from a list of values. One line has an error that will cause the code to not work as expected. Which line is it?:
+    smallest = None
+    print("Before:", smallest)
+    for itervar in [3, 41, 12, 9, 74, 15]:
+        if smallest is None or itervar < smallest:
+            smallest = itervar
+            break
+        print("Loop:", itervar, smallest)
+    print("Smallest:", smallest)
+    > 6
+
+14. Which of these evaluates to False?
+    > 0 is 0.0
+
+15. What will the following code print?:
+    for n in "banana":
+        print(n)
+    > b
+    > a
+    > n
+    > a
+    > n
     > a
 
-11. a
+16. What is the value of i in the following code?
+    word = "bananana"
+    i = word.find("na")
+    > 2
+
+17. What is used to indicate a new line in a string?
+    > \n
+
+18. What does the word 'continue' do in the middle of a loop?
+    > Skips to the next iteration of the loop.
+
+19. What is the value of x after running this code:
+    fruit = "banana"
+    x = fruit[1]
     > a
 
-12. a
+20. Which method is used to add an item at the end of a list?
+    > append
+
+21. What does n equal in this code?
+    > lar@freecodecamp.org
+
+22. a
     > a
 
-13. a
+23. a
     > a
 
-14. a
+24. a
     > a
 
-15. a
+25. a
     > a
 
-16. a
+26. a
     > a
 
-17. a
+27. a
     > a
 
-18. a
+28. a
     > a
 
-5. a
+29. a
     > a
 
-5. a
+30. a
     > a
 
-5. a
+31. a
     > a
 
-5. a
+32. a
     > a
 
-5. a
+33. a
     > a
 
-5. a
+34. a
     > a
 
-5. a
+35. a
     > a
 
-5. a
+36. a
     > a
 
-5. a
+37. a
     > a
 
-5. a
+38. a
     > a
 
-5. a
+39. a
     > a
 
-5. a
+40. a
     > a
 
-5. a
+41. a
     > a
 
-5. a
+42. a
     > a
 
-5. a
+43. a
     > a
 
-5. a
+44. a
     > a
 
-5. a
+45. a
     > a
 
-5. a
+46. a
     > a
 
-5. a
+47. a
     > a
 
-5. a
+48. a
     > a
 
-5. a
+49. a
     > a
 
-5. a
+50. a
+    > a
+
+51. a
+    > a
+
+52. a
+    > a
+
+53. a
+    > a
+
+54. a
+    > a
+
+55. a
+    > a
+
+56. a
     > a
