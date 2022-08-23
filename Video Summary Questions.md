@@ -120,26 +120,55 @@ Which line/lines should be surrounded by try block?
 21. What does n equal in this code?
     > lar@freecodecamp.org
 
-22. a
-    > a
+22. What does dict equal after running this code?:
+    dict = {"Fri": 20, "Thu": 6, "Sat": 1}
+    dict["Thu"] = 13
+    dict["Sat"] = 2
+    dict["Sun"] = 9
+    > {'Fri': 20, 'Thu': 13, 'Sat': 2, 'Sun': 9}
 
-23. a
-    > a
+23. What will the following code print?
+    counts = { 'quincy' : 1 , 'mrugesh' : 42, 'beau': 100, '0': 10}
+    print(counts.get('kris', 0))
+    > 0
 
-24. a
-    > a
+24. What will the following code print?:
+    counts = { 'chuck' : 1 , 'annie' : 42, 'jan': 100}
+    for key in counts:
+        if counts[key] > 10:
+            print(key, counts[key])
+    > annie 42
+    > jan 100
 
-25. a
-    > a
+25. What will the following code print?:
+    d = dict()
+    d['quincy'] = 1
+    d['beau'] = 5
+    d['kris'] = 9
+    for (k,i) in d.items():
+        print(k, i)
+    > quincy 1
+    > beau 5
+    > kris 9
 
-26. a
-    > a
+26. Which does the same thing as the following code?:
+    lst = []
+    for key, val in counts.items():
+        newtup = (val, key)
+        lst.append(newtup)
+    lst = sorted(lst, reverse=True)
+    print(lst)
+    > print( sorted( [ (v,k) for k,v in counts.items() ], reverse=True ) )
 
-27. a
-    > a
+27. Which regex matches only a white space character?
+    > \s
 
-28. a
-    > a
+28. What will the following program print?:
+    import re
+    s = 'A message from csev@umich.edu to cwen@iupui.edu about meeting @2PM'
+    lst = re.findall('\\S+@\\S+', s)
+    print(lst)
+    > ['csev@umich.edu', 'cwen@iupui.edu']
 
 29. a
     > a
