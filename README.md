@@ -5,8 +5,8 @@ Repo to demonstrate my progress learning Python.
 
 
 ### Scientific Computing with Python
-Instructor:  *Charles Russell Severance, University of Michigan*
-Platform:  *freeCodeCamp*
+Instructor:  *Charles Russell Severance, University of Michigan*<br/>
+Platform:  *freeCodeCamp*<br/>
 (a.k.a. Python for Everbody)
 <br/>
 <br/>
@@ -29,7 +29,6 @@ Platform:  *freeCodeCamp*
 - Object-Oriented Programming
 - Databases
 - Data Visualization
-<br/>
 <br/>
 
 ---
