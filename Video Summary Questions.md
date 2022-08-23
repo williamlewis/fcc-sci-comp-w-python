@@ -170,23 +170,40 @@ Which line/lines should be surrounded by try block?
     print(lst)
     > ['csev@umich.edu', 'cwen@iupui.edu']
 
-29. a
-    > a
+29. What will search for a "$" in a regular expression?
+    > \$
 
-30. a
-    > a
+30. What Python library gives access to TCP Sockets?
+    > socket
 
-31. a
-    > a
+31. What type of HTTP request is usually used to access a website?
+    > GET
 
-32. a
-    > a
+32. What does the following code create?:
+    import socket
 
-33. a
-    > a
+    mysock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    mysock.connect(('data.pr4e.org', 80))
+    cmd = 'GET http://data.pr4e.org/romeo.txt HTTP/1.0\r\n\r\n'.encode()
+    mysock.send(cmd)
 
-34. a
-    > a
+    while True:
+        data = mysock.recv(512)
+        if len(data) < 1:
+            break
+        print(data.decode(),end='')
+    mysock.close()
+    > A simple web browser.
+
+33. Which type of encoding do most websites use?
+    > UTF-8
+
+34. What will the output of the following code be like?:
+    import urllib.request
+    fhand = urllib.request.urlopen('http://data.pr4e.org/romeo.txt')
+    for line in fhand:
+        print(line.decode().strip())
+    > Just contents of "romeo.txt".
 
 35. a
     > a
