@@ -205,29 +205,50 @@ Which line/lines should be surrounded by try block?
         print(line.decode().strip())
     > Just contents of "romeo.txt".
 
-35. a
-    > a
+35. What Python library is used for parsing HTML documents and extracting data from HTML documents?
+    > BeautifulSoup
 
-36. a
-    > a
+36. What are the two most common ways to send data over the internet?
+    > JSON and XML
 
-37. a
-    > a
+37. What is wrong with the following XML?:
+    <person>
+    <name>Chuck</name>
+    <phone type="intl">
+        +1 734 303 4456
+    <email hide="yes" />
+    </person>
+    > Phone tag is missing closing tag.
 
-38. a
-    > a
+38. What is XSD?
+    > The W3C Schema specification for XML.
 
-39. a
-    > a
+39. What will the following code print?:
+    import json
+    data = '''
+    [
+        { "id" : "001",
+        "x" : "2",
+        "name" : "Quincy"
+        } ,
+        { "id" : "009",
+        "x" : "7",
+        "name" : "Mrugesh"
+        }
+    ]
+    '''
+    info = json.loads(data)
+    print(info[1]['name'])
+    > Mrugesh
 
-40. a
-    > a
+40. With a services oriented approach to developing web apps, where is the data located?
+    > Spread across many computer systems connected via the internet or internal network.
 
-41. a
-    > a
+41. What does API stand for?
+    > Application Programming Interface
 
-42. a
-    > a
+42. When making a request from the Twitter API, what information must always be sent with the request?
+    > key
 
 43. a
     > a
