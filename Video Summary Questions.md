@@ -250,6 +250,14 @@ Which line/lines should be surrounded by try block?
 42. When making a request from the Twitter API, what information must always be sent with the request?
     > key
 
+
+
+
+
+
+
+    
+
 43. a
     > a
 
