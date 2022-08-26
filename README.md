@@ -12,7 +12,7 @@ Platform:  *freeCodeCamp*<br/>
 <br/>
 
 ---
-### Course Outline (Python for Everybody):
+### Python for Everybody (Course Outline):
 - Introduction:  Why Program
 - Variables, Expressions, & Statements
 - Conditional Execution
@@ -32,7 +32,7 @@ Platform:  *freeCodeCamp*<br/>
 <br/>
 
 ---
-### Projects (Scientific Computing with Python):
+### Scientific Computing with Python (Hands-On Projects):
 - Arithmetic Formatter
 - Time Calculator
 - Budget App
