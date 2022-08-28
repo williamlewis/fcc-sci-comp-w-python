@@ -1,3 +1,3 @@
-# Time Calculator
+# Polygon Area Calculator
 *freeCodeCamp:  Scientific Computing with Python*
-*Project 02*
+*Project 04*

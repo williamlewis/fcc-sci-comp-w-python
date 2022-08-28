@@ -1,3 +1,3 @@
-# Time Calculator
+# Probability Calculator
 *freeCodeCamp:  Scientific Computing with Python*
-*Project 02*
+*Project 05*
