@@ -266,38 +266,60 @@ Which line/lines should be surrounded by try block?
     > 2
     > 4
 
-45. a
-    > a
+45. What will the following program print?:
+    class PartyAnimal:
+        x = 0
+        name = ''
+        def __init__(self, nam):
+            self.name = nam
+            print(self.name,'constructed')
+        def party(self):
+            self.x = self.x + 1
+            print(self.name,'party count',self.x)
 
-46. a
-    > a
+    q = PartyAnimal('Quincy')
+    m = PartyAnimal('Miya')
 
-47. a
-    > a
+    q.party()
+    m.party()
+    q.party()
+    > Quincy constructed
+    > Miya constructed
+    > Quincy party count 1
+    > Miya party count 1
+    > Quincy party count 2
 
-48. a
-    > a
+46. What is inheritance in object-oriented programming?
+    > The ability to create a new class by extending an existing class.
 
-49. a
-    > a
+47. Which is NOT a primary data structure in a database?
+    > index
 
-50. a
-    > a
+48. What SQL command would you use to retrieve all users that have the email address quincy@freecodecamp.org?
+    > SELECT * FROM Users WHERE email="quincy@freecodecamp.org"
 
-51. a
-    > a
+49. What is the best practice for how many times a piece of string data should be stored in a database?
+    > 1
 
-52. a
-    > a
+50. What is a foreign key?
+    > A number that points to the primary key of an associated row in a different table.
 
-53. a
-    > a
+51. Relational Databases: Relationship Building
 
-54. a
-    > a
+What does the INSERT command do in SQL?
+    > It defines a new row by listing the fields we want to include followed by the values we want placed in the new row.
 
-55. a
-    > a
+52. When using a JOIN clause in an SQL statement, what does ON do?
+    > It indicates how the two tables are to be joined.
 
-56. a
-    > a
+53. Which is an example of a many-to-many relationship?
+    > teacher to student
+
+54. Most data needs to be ______ before using it.
+    > cleaned
+
+55. How does the PageRank algorithm work?
+    > It determines which pages are most highly connected.
+
+56. Which is a common JavaScript visualization library?
+    > D3
