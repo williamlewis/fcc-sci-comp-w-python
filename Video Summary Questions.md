@@ -250,11 +250,21 @@ Which line/lines should be surrounded by try block?
 42. When making a request from the Twitter API, what information must always be sent with the request?
     > key
 
-43. a
-    > a
+43. Which is NOT true about objects in Python?
+    > Objects are one of the five standard data types.
 
-44. a
-    > a
+44. What will the following program print?:
+    class PartyAnimal:
+        x = 0
+        def party(self):
+            self.x = self.x + 2
+            print(self.x)
+
+    an = PartyAnimal()
+    an.party()
+    an.party()
+    > 2
+    > 4
 
 45. a
     > a
