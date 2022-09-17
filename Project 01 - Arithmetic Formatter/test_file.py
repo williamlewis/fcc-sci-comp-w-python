@@ -1,28 +1,19 @@
-# problems = '1234 + 56'
-#from re import A
-
-
-
-# problems = ['3801 - 2', '123 + 49']
-# problems = ['1 + 2', '1 - 9380']
-# problems = ['3 + 855', '3801 - 2', '45 + 43', '123 + 49']
-# problems = ['11 + 4', '3801 - 2999', '1 + 2', '123 + 49', '1 - 9380']
-# problems = ['44 + 815', '909 - 2', '45 + 43', '123 + 49', '888 + 40', '653 + 87']
-# problems = ['3 / 855', '3801 - 2', '45 + 43', '123 + 49']
-# problems = ['24 + 85215', '3801 - 2', '45 + 43', '123 + 49']
-# problems = ['98 + 3g5', '3801 - 2', '45 + 43', '123 + 49']
+# problems = [['3801 - 2', '123 + 49']]
+# problems = [['1 + 2', '1 - 9380']]
+# problems = [['3 + 855', '3801 - 2', '45 + 43', '123 + 49']]
+# problems = [['11 + 4', '3801 - 2999', '1 + 2', '123 + 49', '1 - 9380']]
+# problems = [['44 + 815', '909 - 2', '45 + 43', '123 + 49', '888 + 40', '653 + 87']]
+# problems = [['3 / 855', '3801 - 2', '45 + 43', '123 + 49']]
+# problems = [['24 + 85215', '3801 - 2', '45 + 43', '123 + 49']]
+# problems = [['98 + 3g5', '3801 - 2', '45 + 43', '123 + 49']]
 # problems = [['3 + 855', '988 + 40'], True]
 problems = [['32 - 698', '1 - 3801', '45 + 43', '123 + 49', '988 + 40'], True]
 
+# Note:  defition must be modified to include optional second argument (default as False)
 
-# check if optional argument has been provided & assume default to not provide calculated answer
-give_calc = False
-if (len(problems) > 1) and problems[1] == True:
-    prob_list = problems[0]
-    give_calc = True
-else:
-    prob_list = problems
-
+prob_list = problems[0]
+if len(problems) > 1:
+    give_calc = problems[1]
 
 # check for max number of problems
 if len(prob_list) > 5:
@@ -53,7 +44,6 @@ else:
         operand_a = prob_parts[0]
         operator = prob_parts[1]
         operand_b = prob_parts[2]
-
 
         if (operand_a.isdigit() == False) or (operand_b.isdigit() == False):
             arranged_problems = "Error: Numbers must only contain digits."
@@ -104,7 +94,8 @@ else:
             calc_row += calc
 
 
-        if give_calc == True:
+        # set variable to return with or without calculated answer as fourth row
+        if give_calc == True: # function statement must be modified to include "give_calc=False" as the optional argument with default value of False
             arranged_problems = top_row + '\n' + bottom_row + '\n' + dash_row + '\n' + calc_row
         else:
             arranged_problems = top_row + '\n' + bottom_row + '\n' + dash_row
