@@ -39,24 +39,33 @@ res_ampm = start_ampm # set as original, to remain unless changed
 # make time conversions to handle spilling over into next hour, into next AM/PM cycle, into next day, or into subsequent days
 # convert minutes to roll over into next hour
 if res_min > 59:
-    res_min -= 59
+    res_min -= 60
     if res_min < 10:
         res_min = '0' + str(res_min)
     res_hrs += 1
 
-# convert between AM and PM, then handle roll over to following day (not multiple days)
+
+# make small function to change between AM & PM
+def change_ampm(start_val):
+    if start_val == 'AM':
+        new_val = 'PM'
+        new_day = False
+    elif start_val == 'PM':
+        new_val = 'AM'
+        new_day = True
+    else:
+        print('Error changing b/w AM and PM')
+    return new_val, new_day
+
+# convert between AM and PM, then handle roll over to SINGLE day ahead(not multiple days)
 if (res_hrs > 12) and (res_hrs < 24):
     res_hrs -= 12
-    if start_ampm == 'AM':
-        res_ampm = 'PM'
-    elif start_ampm == 'PM':
-        res_ampm = 'AM'
-        print('trigger day change here')
-        # handle SINGLE day conversion here...
-    else:
-        print('error changing b/w AM and PM')
+    res_ampm, add_day = change_ampm(start_ampm)
 
-# convert between AM and PM, then handle roll over for multiple days ahead
+    if add_day == True:
+        print('trigger day change here')
+
+# convert between AM and PM, then handle roll over for MULTIPLE days ahead
 # consider making am/pm conversion a small function to put in both blocks here
 
 
