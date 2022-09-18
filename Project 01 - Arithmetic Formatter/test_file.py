@@ -9,7 +9,7 @@
 # problems = [['3 + 855', '988 + 40'], True]
 problems = [['32 - 698', '1 - 3801', '45 + 43', '123 + 49', '988 + 40'], True]
 
-# Note:  defition must be modified to include optional second argument (default as False)
+# Note:  function definition must be modified to include optional second argument (default as False)
 
 prob_list = problems[0]
 if len(problems) > 1:
