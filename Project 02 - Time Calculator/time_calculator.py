@@ -10,11 +10,23 @@
 
 
 # test_input = ["3:00 PM", "3:10"]
+    # Returns: 6:10 PM  
+
 # test_input = ["11:30 AM", "2:32", "Monday"]
-# test_input = ["11:43 AM", "00:20"] # NOT WORKING, not switching from AM to PM
+    # Returns: 2:02 PM, Monday
+
+# test_input = ["11:43 AM", "00:20"]
+    # Returns: 12:03 PM
+
 # test_input = ["10:10 PM", "3:30"]
-# test_input = ["11:43 PM", "24:20", "tueSday"] # NOT WORKING, not switching from 11 to 12
+    # Returns: 1:40 AM (next day)
+
+# test_input = ["11:43 PM", "24:20", "tueSday"] # NOT WORKING, not getting from 11 to 12, 1 day too many in rollover
+    # Returns: 12:03 AM, Thursday (2 days later)
+
 test_input = ["6:30 PM", "205:12"] # NOT WORKING, not switching from PM to AM
+    # Returns: 7:42 AM (9 days later)
+
 
 
 
@@ -32,13 +44,9 @@ if len(test_input) > 2:
     day_index = days_of_wk.index(day)
 
 
-def check_days_ahead(res_hrs): # for res_hrs over 24, checks for number of full days forward and remaining hours
-    days_later = res_hrs // 24
-    extra_hrs = res_hrs % 24
 
-    return days_later, extra_hrs    
-
-def change_ampm(start_ampm): # for res_hrs between 12 and 24; changes between AM & PM, then flags if time rolls into next day
+def change_ampm(start_ampm):
+    # for res_hrs between 12 and 24; changes between AM & PM, then flags if time rolls into next day
     if start_ampm == 'AM':
         res_ampm = 'PM'
         add_day = False
@@ -48,16 +56,6 @@ def change_ampm(start_ampm): # for res_hrs between 12 and 24; changes between AM
     else:
         print('Error changing b/w AM and PM')
     return res_ampm, add_day
-
-
-# def change_day(day):
-#     day_index = days_of_wk.index(day)
-#     if day_index < 7:
-#         day_index += 1
-#     elif day_index
-
-
-    day = days_of_wk[(index(day) + 1)]
 
 
 
@@ -72,7 +70,7 @@ dur_mins = int(duration.split(':')[1])
 
 
 # do basic math to add duration to start time
-res_hrs = start_hrs + dur_hrs
+res_hrs = start_hrs
 res_min = start_mins + dur_mins
 res_ampm = start_ampm # set as original, to remain unless changed
 res_day = start_day # set as original, to remain unless changed
@@ -85,34 +83,67 @@ if res_min > 59:
     res_min -= 60
     if res_min < 10:
         res_min = '0' + str(res_min)
+    
     res_hrs += 1
+    if res_hrs == 12:
+        res_ampm, add_day = change_ampm(start_ampm)
+
+        if add_day is True:
+            days_later += 1
+            #day_index += 1 CONFLICTING BY DOUBLING UP W/ INCREMENT IN 24+ CODE BLOCK BELOW
+
+print(res_hrs)
+print(res_min)
+print(res_ampm)
 
 
+days_later += dur_hrs // 24
+res_hrs += dur_hrs % 24
 if res_hrs > 24:
-    while res_hrs > 24:
-        days_later += res_hrs // 24
-        day_index += days_later
+    days_later += res_hrs // 24
+    res_hrs += res_hrs % 24
 
-        extra_hours = res_hrs % 24
-        res_hrs = start_hrs + extra_hours
 
-if 12 < res_hrs < 24:
+        # if res_hrs > 24: # has to be repeated one time, in case extra hours plust start time go over 24
+        #     days_later += res_hrs // 24
+        #     extra_hours = res_hrs % 24
+
+        #     res_hrs = start_hrs + extra_hours
+
+    # while res_hrs > 24:
+    #     days_later += res_hrs // 24
+    #     print(str(days_later) + ' days later')
+    #     extra_hrs = res_hrs % 24
+    #     print(str(extra_hrs) + ' extra hours')
+    #     #day_index += days_later
+
+    #     res_hrs -= 24
+    #     # ...........go back to adding extra hours (from modulus) to start time?
+    
+    # res_hrs = start_hrs + extra_hrs
+
+
+
+if 12 < res_hrs < 24: # make a while loop
     res_hrs -= 12
     res_ampm, add_day = change_ampm(start_ampm)
 
+    # TEST TO REINSTATE
     if add_day is True:
         days_later += 1
-        day_index += 1
+        #day_index += 1
 
+
+res_time = str(res_hrs) + ':' + str(res_min) + ' ' + res_ampm
 if res_hrs <= 12:
     res_time = str(res_hrs) + ':' + str(res_min) + ' ' + res_ampm
 
 
-# if (day is not None) and (day_index > 6):
+
+day_index += days_later
 if day_index > 6:
     while day_index > 6:
         day_index -= 7
-    
 res_day = days_of_wk[day_index]
 
 
