@@ -1,20 +1,20 @@
 """
-- accept inputs:  start time, duration, (optional) day of week
+/ accept inputs:  start time, duration, (optional) day of week
 / add duration to start time by breaking each into hours & minutes, and get AM/PM from start time
 / if hours go over 12, subtract 12 & change b/w AM & PM
     - figure out how to handle multiple days (for any hour whole num in duration)
 / if minutes go over 60, subtract 60 & add 1 to hour (should process mins before hrs)
 / if suffix changes from PM to AM, change day to next in week, & add note for for next day or n days later
-- one space between response parts, comma after result time if followed by a day of the week
+/ one space between response parts, comma after result time if followed by a day of the week
 """
 
 
-
+# test_input = ["3:00 PM", "3:10"]
 # test_input = ["11:30 AM", "2:32", "Monday"]
-from re import A
-
-
-test_input = ["6:30 PM", "205:12"]
+# test_input = ["11:43 AM", "00:20"] # NOT WORKING, not switching from AM to PM
+# test_input = ["10:10 PM", "3:30"]
+# test_input = ["11:43 PM", "24:20", "tueSday"] # NOT WORKING, not switching from 11 to 12
+test_input = ["6:30 PM", "205:12"] # NOT WORKING, not switching from PM to AM
 
 
 
@@ -24,7 +24,7 @@ start = test_input[0]
 duration = test_input[1]
 day = None
 days_later = 0
-day_index = 9 # make this a cleaner solution
+day_index = -1 # placeholder value, out of possible range
 if len(test_input) > 2:
     day = test_input[2]
     day = day.lower()
@@ -107,31 +107,36 @@ if 12 < res_hrs < 24:
 if res_hrs <= 12:
     res_time = str(res_hrs) + ':' + str(res_min) + ' ' + res_ampm
 
+
+# if (day is not None) and (day_index > 6):
+if day_index > 6:
+    while day_index > 6:
+        day_index -= 7
+    
+res_day = days_of_wk[day_index]
+
+
 if day is None:
     if days_later == 0:
-        A
-    elif days_later > 0:
-        A
+        pass
+    elif days_later == 1:
+        res_time += ' (next day)'
+    elif days_later > 1:
+        res_time += ' (' + str(days_later) + ' days later)'
     else:
         print('error calculating days later WITHOUT day of week')
 elif day is not None:
     if days_later == 0:
-        A
+        res_time += ', ' + str(res_day)
     elif days_later > 0:
-        A
+        res_time += ', ' + str(res_day) + ' (' + str(days_later) + ' days later)'
     else:
         print('error calculating days later WITH day of week')
 else:
     print('error calculating day')
 
 
-output = res_time # PLUS specific formatting
-    
-    print(res_time)
-    print(str(days_later) + ' days later')
-    # print(str(extra_hrs) + ' extra hours')
-    print(day_index)
-
+print(res_time)
 
 
 
