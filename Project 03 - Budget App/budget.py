@@ -38,28 +38,40 @@ class Category:
     # customize output when object is printed
     def __str__(self):
 
-        print_list = []
+        print_list = ''
 
         row_width = 30
         asterisk_flank = '*' * int(((row_width - len(self.name)) / 2))
-        title_row = asterisk_flank + self.name + asterisk_flank
-        print_list.append(title_row)
+        title_row = asterisk_flank + self.name + asterisk_flank + '\n'
+        print_list += title_row
 
         descr_width = 23
         amount_width = 7
         for n in self.ledger:
-            ledger_index = self.ledger.index(n)
-            descr_leftover = ' ' * (descr_width - len(self.ledger[ledger_index]['description']))
-            amount_leftover = ' ' * (amount_width - len(str(float(self.ledger[ledger_index]['amount']))))
-            ledger_row = self.ledger[ledger_index]['description'][:23] + descr_leftover + amount_leftover + str(float(self.ledger[ledger_index]['amount']))
-            print_list.append(ledger_row)
+            i = self.ledger.index(n)
+            row_descr = self.ledger[i]['description'][:23]
+            # row_amount = str(round(float(self.ledger[i]['amount']), 2))
+            row_amount = format(self.ledger[i]['amount'], '.2f')
+
+            # max_descr = self.ledger[i]['description'][:23]
+            # descr_leftover = ' ' * (descr_width - len(max_descr))
+            descr_leftover = ' ' * (descr_width - len(row_descr))
+
+            # amount_leftover = ' ' * (amount_width - len(str(float(self.ledger[i]['amount']))))
+            # ledger_row = self.ledger[i]['description'][:23] + descr_leftover + amount_leftover + str(float(self.ledger[i]['amount'])) + '\n'
+            # amount_leftover = ' ' * (amount_width - len(str(round(float(self.ledger[i]['amount'])), 2)))
+            # ledger_row = self.ledger[i]['description'][:23] + descr_leftover + amount_leftover + str(round(float(self.ledger[i]['amount']), 2)) + '\n'
+            
+            amount_leftover = ' ' * (amount_width - len(row_amount))
+            # ledger_row = self.ledger[i]['description'][:23] + descr_leftover + amount_leftover + str(round(float(self.ledger[i]['amount']), 2)) + '\n'
+            ledger_row = row_descr + descr_leftover + amount_leftover + row_amount + '\n'
+            
+            print_list += ledger_row
 
         total_row = 'Total: ' + str(float(self.get_balance()))
-        print_list.append(total_row)
+        print_list += total_row
 
-        #output = for n in print_list: print(n)
-        #output = print([row for row in print_list])
-        output = [row for row in print_list]
+        output = print_list
 
         return output
 
