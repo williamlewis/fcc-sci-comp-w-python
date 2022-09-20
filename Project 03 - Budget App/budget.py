@@ -4,6 +4,7 @@ class Category:
         self.name = cat_name
         self.ledger = []
     
+    # create required methods
     def deposit(self, amount, descr = ''):
         self.ledger.append({'amount': amount, 'description': descr})
     
@@ -33,6 +34,34 @@ class Category:
             return True
         else:
             return False
+    
+    # customize output when object is printed
+    def __str__(self):
+
+        print_list = []
+
+        row_width = 30
+        asterisk_flank = '*' * int(((row_width - len(self.name)) / 2))
+        title_row = asterisk_flank + self.name + asterisk_flank
+        print_list.append(title_row)
+
+        descr_width = 23
+        amount_width = 7
+        for n in self.ledger:
+            ledger_index = self.ledger.index(n)
+            descr_leftover = ' ' * (descr_width - len(self.ledger[ledger_index]['description']))
+            amount_leftover = ' ' * (amount_width - len(str(float(self.ledger[ledger_index]['amount']))))
+            ledger_row = self.ledger[ledger_index]['description'][:23] + descr_leftover + amount_leftover + str(float(self.ledger[ledger_index]['amount']))
+            print_list.append(ledger_row)
+
+        total_row = 'Total: ' + str(float(self.get_balance()))
+        print_list.append(total_row)
+
+        #output = for n in print_list: print(n)
+        #output = print([row for row in print_list])
+        output = [row for row in print_list]
+
+        return output
 
 
 # outside of Category class
