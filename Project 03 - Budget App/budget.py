@@ -1,5 +1,4 @@
 import math
-from re import A
 
 class Category:
     def __init__(self, cat_name):
@@ -92,18 +91,18 @@ def create_spend_chart(categories):
         cat_spend = n.get_balance()
         cat_perc = (cat_spend / overall_spend)
         cat_perc_rounded = (math.floor(cat_perc * 10)) * 10 # make a float, then round down with math.floor(), then multiply by ten
-        cat_num_o = 'o' * (cat_perc_rounded / 10)
-        spend_percentages.append([n, cat_perc_rounded, cat_num_o])
+        #cat_num_o = 'o' * (cat_perc_rounded / 10)
+        spend_percentages.append([n, cat_perc_rounded])
     
     # sort spend_percentages list
     spend_percentages.sort(key = lambda x: x[1], reverse=True)
 
-
+    # build primary chart components including vertical bars of 'o'
     row_val = 100
     chart_title = 'Percentage spent by category\n'
     chart_graph = ''
     for i in range(0, 11):
-        row_label = (' ' * (3 - len(row_val))) + str(row_val) + ' |' # 3 or 6 spaces where number is shorter?
+        row_label = (' ' * (3 - len(str(row_val)))) + str(row_val) + ' |' # 3 or 6 spaces where number is shorter?
         
         row_bars = ''
         for cat in spend_percentages:
@@ -112,25 +111,38 @@ def create_spend_chart(categories):
             else:
                 row_bars += '   '
         
-        full_row = row_label + row_bars + '\n'
-        chart_graph += full_row
+        full_graph_row = row_label + row_bars + '\n'
+        chart_graph += full_graph_row
         
         row_val -= 10
     
-    chart_base = '    ----------\n'
+    chart_base = '    ' + ('-' * len(categories)) + '-\n'
 
-    label_max_len = 0
-    for cat in spend_percentages:
-        if len(cat[0]) > label_max_len:
-            label_max_len = len(cat[0])
-    
+
+    # build labels at base of chart by pivoting category names to be vertical
     chart_labels = ''
-    for cat in spend_percentages:
-        cat_name = cat[0]
-        
 
+    max_name_len = 0
+    for cat in spend_percentages:
+        name = cat[0].name
+        if len(name) > max_name_len:
+            max_name_len = len(name)
     
-    
+    letter_i = 0
+
+    for i in range(0, max_name_len):
+        pivot_letters = ''
+        for cat in spend_percentages:
+            name = cat[0].name
+            if len(name) < letter_i:
+                pivot_letters += ' ' + name[letter_i] + ' '
+            else:
+                pivot_letters += '   '
+        
+        full_label_row = '    ' + pivot_letters + ' \n'
+        chart_labels += full_label_row
+        letter_i += 1
+
 
     output = chart_title + chart_graph + chart_base + chart_labels
 
