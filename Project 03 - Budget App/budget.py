@@ -1,4 +1,5 @@
 import math
+from re import A
 
 class Category:
     def __init__(self, cat_name):
@@ -91,7 +92,75 @@ def create_spend_chart(categories):
         cat_spend = n.get_balance()
         cat_perc = (cat_spend / overall_spend)
         cat_perc_rounded = (math.floor(cat_perc * 10)) * 10 # make a float, then round down with math.floor(), then multiply by ten
-        spend_percentages.append([n, cat_perc_rounded, cat_perc])
+        cat_num_o = 'o' * (cat_perc_rounded / 10)
+        spend_percentages.append([n, cat_perc_rounded, cat_num_o])
+    
+    # sort spend_percentages list
+    spend_percentages.sort(key = lambda x: x[1], reverse=True)
+
+
+    row_val = 100
+    chart_title = 'Percentage spent by category\n'
+    chart_graph = ''
+    for i in range(0, 11):
+        row_label = (' ' * (3 - len(row_val))) + str(row_val) + ' |' # 3 or 6 spaces where number is shorter?
+        
+        row_bars = ''
+        for cat in spend_percentages:
+            if cat[1] >= row_val:
+                row_bars += ' o '
+            else:
+                row_bars += '   '
+        
+        full_row = row_label + row_bars + '\n'
+        chart_graph += full_row
+        
+        row_val -= 10
+    
+    chart_base = '    ----------\n'
+
+    label_max_len = 0
+    for cat in spend_percentages:
+        if len(cat[0]) > label_max_len:
+            label_max_len = len(cat[0])
+    
+    chart_labels = ''
+    for cat in spend_percentages:
+        cat_name = cat[0]
+        
+
+    
+    
+
+    output = chart_title + chart_graph + chart_base + chart_labels
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        # spend_percentages.append([n, cat_perc_rounded, cat_perc])
         # include cat_perc unrounded value to reference in case total sum of percentages does not equal 100?
     
     # # check that rounded category percentages total up to 100; if not, add 10 to highest raw value & repeat if needed
@@ -108,3 +177,4 @@ def create_spend_chart(categories):
     #         # use category name to access sublist in main spend percentages list, cat_perc_rounded value item
     #         # add 10 to cat_perc_rounded value item (directly in main spend_percengtages list; overwrite)
     
+
