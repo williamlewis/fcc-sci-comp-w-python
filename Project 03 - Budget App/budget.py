@@ -71,7 +71,7 @@ class Category:
 test_input = ['Clothing', 'Food', 'Auto']
 test_spending = {'Clothing': .2, 'Food': .6, 'Auto': .1}
 
-
+    
 def create_spend_chart(categories):
     categories = test_input
 
@@ -80,7 +80,31 @@ def create_spend_chart(categories):
         categories = categories[:4]
         print('Up to four categories allowed for bar chart; additional will not plot.')
 
+    # get sum of all WITHDRAWALS  by category(check for negative values only)
+    spend_percentages = []
+    for cat in categories:
+        cat_spend = 0
+        ledger = self.ledger
+        for item in ledger:
+            if item['amount'] < 0:
+                cat_spend += item['amount']
+        cat_spend *= -1
+        spend_percentages.append([cat, cat_spend])
+    
     # establish overall spend to calculate percentages
+    overall_spend = 0
+    for n in spend_percentages:
+        overall_spend += n[1]
+
+    # calculate rounded down percentage for each category
+    for n in spend_percentages:
+        cat_spend = n[1]
+        cat_perc = cat_spend / overall_spend
+        cat_perc_rounded = (math.float(cat_perc * 10)) * 10
+        n.append(cat_perc_rounded) # [Category, cat_spend, cat_perc_rounded]
+
+
+    '''# establish overall spend to calculate percentages
     overall_spend = 0
     for n in categories:
         overall_spend += n.get_balance()
@@ -92,26 +116,26 @@ def create_spend_chart(categories):
         cat_perc = (cat_spend / overall_spend)
         cat_perc_rounded = (math.floor(cat_perc * 10)) * 10 # make a float, then round down with math.floor(), then multiply by ten
         #cat_num_o = 'o' * (cat_perc_rounded / 10)
-        spend_percentages.append([n, cat_perc_rounded])
+        spend_percentages.append([n, cat_perc_rounded])'''
     
     # sort spend_percentages list
-    spend_percentages.sort(key = lambda x: x[1], reverse=True)
+    spend_percentages.sort(key = lambda x: x[2], reverse=True)
 
     # build primary chart components including vertical bars of 'o'
     row_val = 100
     chart_title = 'Percentage spent by category\n'
     chart_graph = ''
     for i in range(0, 11):
-        row_label = (' ' * (3 - len(str(row_val)))) + str(row_val) + ' |' # 3 or 6 spaces where number is shorter?
+        row_label = (' ' * (3 - len(str(row_val)))) + str(row_val) + '|' # 3 or 6 spaces where number is shorter?
         
         row_bars = ''
         for cat in spend_percentages:
-            if cat[1] >= row_val:
+            if cat[2] >= row_val:
                 row_bars += ' o '
             else:
                 row_bars += '   '
         
-        full_graph_row = row_label + row_bars + '\n'
+        full_graph_row = row_label + row_bars + ' \n'
         chart_graph += full_graph_row
         
         row_val -= 10
@@ -134,7 +158,7 @@ def create_spend_chart(categories):
         pivot_letters = ''
         for cat in spend_percentages:
             name = cat[0].name
-            if len(name) < letter_i:
+            if len(name) > letter_i:
                 pivot_letters += ' ' + name[letter_i] + ' '
             else:
                 pivot_letters += '   '
@@ -145,6 +169,7 @@ def create_spend_chart(categories):
 
 
     output = chart_title + chart_graph + chart_base + chart_labels
+    return output
 
 
 
