@@ -71,7 +71,7 @@ class Category:
 test_input = ['Clothing', 'Food', 'Auto']
 test_spending = {'Clothing': .2, 'Food': .6, 'Auto': .1}
 
-    
+
 def create_spend_chart(categories):
     categories = test_input
 
@@ -84,12 +84,12 @@ def create_spend_chart(categories):
     spend_percentages = []
     for cat in categories:
         cat_spend = 0
-        ledger = self.ledger
+        ledger = Category(cat).ledger
         for item in ledger:
             if item['amount'] < 0:
                 cat_spend += item['amount']
         cat_spend *= -1
-        spend_percentages.append([cat, cat_spend])
+        spend_percentages.append([cat.name, cat_spend])
     
     # establish overall spend to calculate percentages
     overall_spend = 0
@@ -100,8 +100,8 @@ def create_spend_chart(categories):
     for n in spend_percentages:
         cat_spend = n[1]
         cat_perc = cat_spend / overall_spend
-        cat_perc_rounded = (math.float(cat_perc * 10)) * 10
-        n.append(cat_perc_rounded) # [Category, cat_spend, cat_perc_rounded]
+        cat_perc_rounded = (math.floor(cat_perc * 10)) * 10
+        n.append(cat_perc_rounded) # [cat_name, cat_spend, cat_perc_rounded]
 
 
     '''# establish overall spend to calculate percentages
@@ -119,7 +119,7 @@ def create_spend_chart(categories):
         spend_percentages.append([n, cat_perc_rounded])'''
     
     # sort spend_percentages list
-    spend_percentages.sort(key = lambda x: x[2], reverse=True)
+    # spend_percentages.sort(key = lambda x: x[2], reverse=True)
 
     # build primary chart components including vertical bars of 'o'
     row_val = 100
@@ -139,8 +139,8 @@ def create_spend_chart(categories):
         chart_graph += full_graph_row
         
         row_val -= 10
-    
-    chart_base = '    ' + ('-' * len(categories)) + '-\n'
+
+    chart_base = '    ' + ('-' * len(categories) * 3) + '-\n'
 
 
     # build labels at base of chart by pivoting category names to be vertical
@@ -148,7 +148,7 @@ def create_spend_chart(categories):
 
     max_name_len = 0
     for cat in spend_percentages:
-        name = cat[0].name
+        name = cat[0]
         if len(name) > max_name_len:
             max_name_len = len(name)
     
@@ -157,7 +157,7 @@ def create_spend_chart(categories):
     for i in range(0, max_name_len):
         pivot_letters = ''
         for cat in spend_percentages:
-            name = cat[0].name
+            name = cat[0]
             if len(name) > letter_i:
                 pivot_letters += ' ' + name[letter_i] + ' '
             else:
@@ -166,8 +166,11 @@ def create_spend_chart(categories):
         full_label_row = '    ' + pivot_letters + ' \n'
         chart_labels += full_label_row
         letter_i += 1
+    
+    chart_labels = chart_labels[:-2] + ' ' # remove final line break and match end spaces
 
 
+    # combine all chart components to return as single variable
     output = chart_title + chart_graph + chart_base + chart_labels
     return output
 
