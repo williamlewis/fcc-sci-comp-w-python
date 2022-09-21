@@ -103,24 +103,6 @@ def create_spend_chart(categories):
         cat_perc_rounded = (math.floor(cat_perc * 10)) * 10
         n.append(cat_perc_rounded) # [cat_name, cat_spend, cat_perc_rounded]
 
-
-    '''# establish overall spend to calculate percentages
-    overall_spend = 0
-    for n in categories:
-        overall_spend += n.get_balance()
-    
-    # get balance & calculate rounded down percentage for each category
-    spend_percentages = []
-    for n in categories:
-        cat_spend = n.get_balance()
-        cat_perc = (cat_spend / overall_spend)
-        cat_perc_rounded = (math.floor(cat_perc * 10)) * 10 # make a float, then round down with math.floor(), then multiply by ten
-        #cat_num_o = 'o' * (cat_perc_rounded / 10)
-        spend_percentages.append([n, cat_perc_rounded])'''
-    
-    # sort spend_percentages list
-    # spend_percentages.sort(key = lambda x: x[2], reverse=True)
-
     # build primary chart components including vertical bars of 'o'
     row_val = 100
     chart_title = 'Percentage spent by category\n'
