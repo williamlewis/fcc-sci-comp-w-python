@@ -26,21 +26,30 @@ class Hat:
 def experiment(hat, expected_balls, num_balls_drawn, num_experiments):
     # create deep copy of hat to draw from?
     
-    num_outcome_matches = 0
-    for i in range(0, num_experiments):
-        drawn_balls = hat.draw(num_balls_drawn)
+    num_outcome_matches = 0 # incremented up only when full match condition (for multiple colors) is met within an experiment attempt
+
+    for i in range(0, num_experiments): # do correct number of experiments
+        drawn_balls = hat.draw(num_balls_drawn) # draw balls out of the hat
+        
         outcome = {}
         for n in drawn_balls:
             if n in outcome:
                 outcome[n] += 1
             else:
                 outcome[n] = 1
+
         # if outcome == expected_balls:
         #     num_outcome_matches += 1
 
-        for color in expected_balls:
-            if (color in outcome) and (outcome[color] >= expected_balls[color]):
-                num_outcome_matches += 1
+
+        for i in range(0, num_experiments): # FOR N IN LIST OF ALL OUTCOMES??
+            all_colors_match = False
+            for color in expected_balls:
+                if (color in outcome) and (outcome[color] >= expected_balls[color]):
+                    all_colors_match = True
+                else:
+                    all_colors_match = False
+            num_outcome_matches += 1
 
     probability = num_outcome_matches / num_experiments
 
