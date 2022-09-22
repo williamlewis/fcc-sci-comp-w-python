@@ -38,16 +38,17 @@ class Rectangle:
         width_fit = self.width // shape.width
         height_fit = self.height // shape.height
         amount_inside = width_fit * height_fit
+        return amount_inside
 
-class Square:
+
+class Square(Rectangle):
     def __init__(self, side_len):
-        self.width = side_len
-        self.height = side_len
+        Rectangle.__init__(self, side_len, side_len)
     
     def __str__(self):
         output = f'Square(side={self.width})'
         return output
     
     def set_side(self, new_side_len):
-        self.width = new_side_len
-        self.height = new_side_len
+        super().set_width(new_side_len)
+        super().set_height(new_side_len)
