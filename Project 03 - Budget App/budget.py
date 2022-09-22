@@ -1,11 +1,11 @@
 import math
 
 class Category:
+
     def __init__(self, cat_name):
         self.name = cat_name
         self.ledger = []
     
-    # create required methods
     def deposit(self, amount, descr = ''):
         self.ledger.append({'amount': amount, 'description': descr})
     
@@ -35,8 +35,7 @@ class Category:
             return True
         else:
             return False
-    
-    # format output when object is printed
+
     def __str__(self):
 
         print_list = ''
@@ -50,13 +49,15 @@ class Category:
         amount_width = 7
         for n in self.ledger:
             i = self.ledger.index(n)
-            row_descr = self.ledger[i]['description'][:23]
+            row_descr = self.ledger[i]['description'][:23]            
             row_amount = format(self.ledger[i]['amount'], '.2f')
-
+          
             descr_leftover = ' ' * (descr_width - len(row_descr))
-            amount_leftover = ' ' * (amount_width - len(row_amount))
 
-            ledger_row = row_descr + descr_leftover + amount_leftover + row_amount + '\n'            
+            
+            amount_leftover = ' ' * (amount_width - len(row_amount))
+            ledger_row = row_descr + descr_leftover + amount_leftover + row_amount + '\n'
+            
             print_list += ledger_row
 
         total_row = 'Total: ' + str(float(self.get_balance()))
@@ -67,15 +68,9 @@ class Category:
         return output
 
 
-# build a simple bar chart to display categories by their percentage of overall spend (categories received as list argument)
-test_input = ['Clothing', 'Food', 'Auto']
-test_spending = {'Clothing': .2, 'Food': .6, 'Auto': .1}
-
 
 def create_spend_chart(categories):
-    categories = test_input
 
-    # check for 4 values max in argument
     if len(categories) > 4:
         categories = categories[:4]
         print('Up to four categories allowed for bar chart; additional will not plot.')
@@ -84,13 +79,13 @@ def create_spend_chart(categories):
     spend_percentages = []
     for cat in categories:
         cat_spend = 0
-        ledger = Category(cat).ledger
+        ledger = cat.ledger
         for item in ledger:
             if item['amount'] < 0:
                 cat_spend += item['amount']
         cat_spend *= -1
         spend_percentages.append([cat.name, cat_spend])
-    
+
     # establish overall spend to calculate percentages
     overall_spend = 0
     for n in spend_percentages:
@@ -101,14 +96,14 @@ def create_spend_chart(categories):
         cat_spend = n[1]
         cat_perc = cat_spend / overall_spend
         cat_perc_rounded = (math.floor(cat_perc * 10)) * 10
-        n.append(cat_perc_rounded) # [cat_name, cat_spend, cat_perc_rounded]
+        n.append(cat_perc_rounded) # [Category, cat_spend, cat_perc_rounded]
 
     # build primary chart components including vertical bars of 'o'
     row_val = 100
     chart_title = 'Percentage spent by category\n'
     chart_graph = ''
     for i in range(0, 11):
-        row_label = (' ' * (3 - len(str(row_val)))) + str(row_val) + '|' # 3 or 6 spaces where number is shorter?
+        row_label = (' ' * (3 - len(str(row_val)))) + str(row_val) + '|'
         
         row_bars = ''
         for cat in spend_percentages:
@@ -121,7 +116,7 @@ def create_spend_chart(categories):
         chart_graph += full_graph_row
         
         row_val -= 10
-
+    
     chart_base = '    ' + ('-' * len(categories) * 3) + '-\n'
 
 
@@ -148,10 +143,9 @@ def create_spend_chart(categories):
         full_label_row = '    ' + pivot_letters + ' \n'
         chart_labels += full_label_row
         letter_i += 1
-    
-    chart_labels = chart_labels[:-2] + ' ' # remove final line break and match end spaces
+
+    chart_labels = chart_labels[:-2] + ' '
 
 
-    # combine all chart components to return as single variable
     output = chart_title + chart_graph + chart_base + chart_labels
     return output
