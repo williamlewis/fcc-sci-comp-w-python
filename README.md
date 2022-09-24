@@ -1,18 +1,24 @@
-# fcc-sci-comp-w-python
-Repo to demonstrate my progress learning Python.
+# Scientific Computing with Python
+
+
+## Hands-On Projects:
+1. Arithmetic Formatter
+2. Time Calculator
+3. Budget App
+4. Polygon Area Calculator
+5. Probability Calculator
 <br/>
 <br/>
 
-
-### Scientific Computing with Python
-Instructor:  *Charles Russell Severance, University of Michigan*<br/>
-Platform:  *freeCodeCamp*<br/>
-(a.k.a. Python for Everbody)
-<br/>
-<br/>
 
 ---
-### Python for Everybody (Course Outline):
+
+## Python for Everybody:
+**Instructor:** *Charles Russell Severance, University of Michigan*<br/>
+**Platform:** *freeCodeCamp*<br/>
+<br/>
+
+### Learning Outline:
 - Introduction:  Why Program
 - Variables, Expressions, & Statements
 - Conditional Execution
@@ -31,10 +37,3 @@ Platform:  *freeCodeCamp*<br/>
 - Data Visualization
 <br/>
 
----
-### Scientific Computing with Python (Hands-On Projects):
-- Arithmetic Formatter
-- Time Calculator
-- Budget App
-- Polygon Area Calculator
-- Probability Calculator
