@@ -6,12 +6,12 @@ Platform: freeCodeCamp<br/>
 ## Hands-On Projects:
 1. **Arithmetic Formatter**
     - convert single-line arithmetic problems into multi-line format with multiple problems
-    - optionally provide arithmetic solution(s)
+    - optionally provide arithmetic solutions
     <br/>
 2. **Time Calculator**
-    - add a time duration to a start time, providing a final time in 12-hour am/pm format
-    - indicate number of days passed if applicable
-    - optionally provide ending day of week
+    - add a time duration to a start time, providing a result time in 12-hour AM/PM format
+    - indicate number of days later for result time
+    - optionally provide day of the week for result time
     <br/>
 3. **Budget App**
     - create a budget `Category` class with methods to handle simple transactions across class instances (e.g. deposit, withdraw, transfer)
@@ -22,8 +22,8 @@ Platform: freeCodeCamp<br/>
     - create a parent class and a subclass with methods to reset dimensions, calculate size attributes, & determine number of number of polygon instances that fit within another instance
     <br/>
 5. **Probability Calculator**
-    - create a "Hat" class that accepts variable number of keyword arguments for colored balls
-    - create a function to experiment drawing balls from the Hat class and calculate probability of specific draw results based on number of experiments
+    - create a "Hat" class that accepts a variable number of keyword arguments for colored balls
+    - create a function to experiment drawing balls from the Hat class and calculate the probability of specific draw results based on the number of experiments
 <br/>
 <br/>
 
